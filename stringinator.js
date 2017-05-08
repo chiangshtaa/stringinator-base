@@ -2,6 +2,8 @@ const _ = require('./underbar');
 
 const first = function(str, n) {
   // Your code goes here
+  // return n === undefined ? str[0] : str.slice(0, n);
+  return _.first(str, n);
 };
 
 const last = function(str, n) {

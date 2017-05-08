@@ -30,6 +30,7 @@ const isOnlyDigits = function(str) {
 
 const filterToOnlyDigits = function(str) {
   // Your code goes here
+  return _.reject(str, element => (isNaN(element) || (element === ' '))).join('');
 };
 
 const truncateString = function(val, maxLength) {

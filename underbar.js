@@ -53,8 +53,8 @@ const each = function(obj, callback=identity) {
 const map = function(obj, callback=identity) {
   // Your code goes here
   var results = [];
-  each(obj, (currentValue, currentIndexOrValue, obj) => {
-    results.push(callback(currentValue, currentIndexOrValue, obj));
+  each(obj, (currentValue, currentIndexOrKey, obj) => {
+    results.push(callback(currentValue, currentIndexOrKey, obj));
   });
   return results;
 };
@@ -74,6 +74,17 @@ const pluck = function(obj, key) {
 // (accumulator, value, index|key, collection).
 const reduce = function(obj, callback=identity, initialValue) {
   // Your code goes here
+  let accumulator = initialValue;
+  let initializing = accumulator === undefined;
+  each(obj, (currentValue, currentIndexOrKey, iteratedObj) => {
+    if (initializing) {
+      initializing = false;
+      accumulator = currentValue;
+    } else {
+      accumulator = callback(accumulator, currentValue, currentIndexOrKey, iteratedObj);
+    }
+  });
+  return accumulator;
 };
 
 // Return true if the object contains the target.

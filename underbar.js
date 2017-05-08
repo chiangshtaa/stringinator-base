@@ -52,6 +52,11 @@ const each = function(obj, callback=identity) {
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 const map = function(obj, callback=identity) {
   // Your code goes here
+  var results = [];
+  each(obj, (currentValue, currentIndexOrValue, obj) => {
+    results.push(callback(currentValue, currentIndexOrValue, obj));
+  });
+  return results;
 };
 
 // Return an array of the values o a certain property in the collection.

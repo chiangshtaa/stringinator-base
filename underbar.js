@@ -63,6 +63,7 @@ const map = function(obj, callback=identity) {
 // E.g. given an array of people objects, return an array of just their ages.
 const pluck = function(obj, key) {
   // Your code goes here
+  return map(obj, item => item[key]);
 };
 
 // Reduces collection to a value which is the accumulated result of running

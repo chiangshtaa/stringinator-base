@@ -8,6 +8,7 @@ const first = function(str, n) {
 
 const last = function(str, n) {
   // Your code goes here
+  return _.last(str, n);
 };
 
 const removeChar = function(str, target) {
